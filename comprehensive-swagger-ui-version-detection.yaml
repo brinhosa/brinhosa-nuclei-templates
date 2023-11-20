@@ -83,7 +83,7 @@ requests:
         regex:
           - '"@version\\sv([\\d\\.]+)"'
           - '"d=!0,h=\\"(.*?)\\",v=\\"([\\d\\.]+)\\",m=\\"(.*?)\\",(g|y)=\\"(.*?)\\""'
-        group: 2
+        group: 2 
 
     matchers-condition: and
     matchers:
