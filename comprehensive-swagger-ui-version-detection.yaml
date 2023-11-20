@@ -55,41 +55,20 @@ requests:
       - "{{BaseURL}}/swagger/swagger-ui.html"
       - "{{BaseURL}}/swagger/index.html"
 
-
-The error message indicates an issue with an escape character in the regex within the YAML file. To resolve this, we need to ensure that all special characters in the regex are correctly escaped.
-
-In YAML, to represent a backslash (\) in a string, you typically need to escape it by doubling it (\\). Additionally, if you are using quotes in your regex, they might also need to be escaped correctly.
-
-Let's correct the template by ensuring all special characters are properly escaped:
-
-yaml
-Copy code
-id: comprehensive-swagger-ui-version-detection
-
-info:
-  name: Comprehensive Swagger UI Version Detection
-  author: yourname
-  severity: info
-  description: Attempts to detect Swagger UI version from a comprehensive list of common paths.
-
-requests:
-  - method: GET
-    path:
-      # [Add your paths here as per the previous template]
-
     extractors:
       - type: regex
         part: body
         regex:
-          - '"@version\\sv([\\d\\.]+)"'
-          - '"d=!0,h=\\"(.*?)\\",v=\\"([\\d\\.]+)\\",m=\\"(.*?)\\",(g|y)=\\"(.*?)\\""'
-        group: 2 
+          - "Version: ([\\d\\.]+)"
+          - "\\?v=([\\d.]+)"
+        group: 1
 
     matchers-condition: and
     matchers:
       - type: word
         words:
-          - "@version"
+          - "Version:"
+          - "?v="
         part: body
 
       - type: status
