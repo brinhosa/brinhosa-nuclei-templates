@@ -59,8 +59,8 @@ requests:
       - type: regex
         part: body
         regex:
-          - "@version\sv(.*?)$"
-          - 'd=!0,h="(.*?)",v="(.*?)",m="(.*?)",(g|y)="(.*?)";'
+          - "@version\\sv(.*?)$"
+          - "d=!0,h=\"(.*?)\",v=\"(.*?)\",m=\"(.*?)\",(g|y)=\"(.*?)\";"
         group: 2
 
     matchers-condition: and
